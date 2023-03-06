@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { Menu } from "./components/navigation";
 
 function App() {
-  return (
+
+    const menu = ["About us" , "Make an appointment" , "Our crew"];
+    return (
     <div className="App">
+        <Menu menu = {menu}/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

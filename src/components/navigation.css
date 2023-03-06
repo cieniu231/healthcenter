@@ -1,0 +1,9 @@
+.listitem {
+    display : inline-block;
+    width : 29rem;
+}
+
+.menuitem {
+    display: inline-block;
+    width: 29rem;
+}
