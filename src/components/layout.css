@@ -1,0 +1,13 @@
+.left-panel {
+    width: 33%;
+    float:left;
+    height:100vh;
+    background-color: dimgrey;
+}
+
+.main-content {
+    width: 66%;
+    float: right;
+    height: 100vh;
+    background-color: #282c34;
+}

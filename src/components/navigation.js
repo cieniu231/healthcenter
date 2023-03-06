@@ -9,13 +9,14 @@ class MenuItem extends React.Component {
 export class Menu extends React.Component {
     render() {
         const menu = this.props.menu;
-        return menu.map((item) => (
-            <nav>
-                <ul>
-                    <li className="listitem"><MenuItem name={item}/></li>
+        const listItems = menu.map((item) => (<li key={item} className="listitem"><MenuItem name={item}/></li>))
+
+        return (
+        <nav className="navigation">
+                <ul className="menulist">
+                    {listItems}
                 </ul>
             </nav>
-            )
         )
     }
 }
