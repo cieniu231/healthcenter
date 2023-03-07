@@ -1,0 +1,25 @@
+.person-container {
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+    width: 75%;
+    height: 25vh;
+
+}
+
+.id-photo-container {
+    float: left;
+    width: 30%;
+}
+
+.information-container {
+    width: 60%;
+    float: right;
+}
+
+.info-desc {
+    text-align: left;
+}
+.info {
+    text-align: right;
+}

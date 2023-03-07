@@ -1,9 +1,15 @@
 import React from 'react'
 import './layout.css'
+import { Person } from './personel.js'
 
 class Layout extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     render() {
+        const workersList = this.props.workers.map((item)=><Person name={item.name} specialization={item.specialization} workingTime={item.workingTime}/>)
+
         return (
             <div>
                 <aside className="left-panel">
@@ -11,7 +17,7 @@ class Layout extends React.Component {
                 </aside>
                 <section className="main-content">
                     <article>
-                        <p>Tutaj będzie główna część strony</p>
+                        {workersList}
                     </article>
                 </section>
 
