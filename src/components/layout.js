@@ -1,6 +1,7 @@
 import React from 'react'
 import './layout.css'
-import { Person } from './personel.js'
+import About from './about.js'
+import Personellist from "./personellist";
 
 class Layout extends React.Component {
     constructor(props) {
@@ -8,7 +9,6 @@ class Layout extends React.Component {
     }
 
     render() {
-        const workersList = this.props.workers.map((item)=><Person name={item.name} specialization={item.specialization} workingTime={item.workingTime}/>)
 
         return (
             <div>
@@ -17,8 +17,9 @@ class Layout extends React.Component {
                 </aside>
                 <section className="main-content">
                     <article>
-                        {workersList}
+                        <Personellist workers={this.props.workers} />
                     </article>
+                    <About/>
                 </section>
 
             </div>

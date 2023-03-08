@@ -4,6 +4,7 @@ import './App.css';
 import { Menu } from './components/navigation';
 import Head  from './components/head.js';
 import Layout from "./components/layout";
+import Personellist from "./components/personellist";
 
 class App extends React.Component {
     constructor(props) {
@@ -42,6 +43,8 @@ class App extends React.Component {
                 <Head/>
                 <Menu menu={menu} handleClick={this.handleClick}/>
                 <Layout workers={workers}/>
+                <Personellist workers={workers}/>
+
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
                     <p>
