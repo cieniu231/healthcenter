@@ -1,14 +1,25 @@
 import React from 'react'
 import './layout.css'
 import About from './about.js'
-import Personellist from "./personellist";
+import Personellist from './personellist.js'
+import Appointment from './appointment.js'
 
 class Layout extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
     render() {
+
+        let pageRender;
+        if(this.props.actualPage == "About us") {
+            pageRender = <About/>;
+        } else if(this.props.actualPage == "Our crew") {
+            pageRender = <Personellist workers={this.props.workers} />;
+        } else if(this.props.actualPage == "Make an appointment") {
+            pageRender = <Appointment/>;
+        }
 
         return (
             <div>
@@ -17,11 +28,9 @@ class Layout extends React.Component {
                 </aside>
                 <section className="main-content">
                     <article>
-                        <Personellist workers={this.props.workers} />
+                        {pageRender}
                     </article>
-                    <About/>
                 </section>
-
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Calendar from './calendar.js'
 
 class Appointment extends React.Component {
     constructor(props){
@@ -7,7 +8,9 @@ class Appointment extends React.Component {
 
     render(){
         return(
-
+            <Calendar/>
             )
     }
 }
+
+export default Appointment
