@@ -16,9 +16,6 @@ class Calendar extends React.Component {
 
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         this.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-        this.daysInMonth = new Date(this.year, this.month+1, 0).getDate();
-
-
     }
     toggleClass() {
         const currentState = this.state.active;
@@ -28,6 +25,41 @@ class Calendar extends React.Component {
     renderDaysHead() {
         return this.days.map((day) => <th>{day}</th>);
     }
+
+    renderMonthTable() {
+
+        // get the numbers of days in the month
+        const daysInMonth = new Date(this.year, this.month+1, 0).getDate();
+
+        // get the first day of the month
+        const tempDate = new Date(this.year, this.month, 1);
+        let firstMonthDay = tempDate.getDay();
+
+        // normally first day is Sunday, Monday is the last
+        // we correct it if it is necessary
+        if(firstMonthDay === 0) {
+            firstMonthDay = 7;
+        }
+
+        // number of all cells - both empty and with days
+        const j = daysInMonth + firstMonthDay - 1;
+
+        // make a counter for <tr> and <td>
+        let trcount = 0;
+        let tdcount = 0;
+
+
+        for (let i = firstMonthDay-1; i<j; i++) {
+            if(i % 7 == 0){
+                trcount++;
+            }
+            tdcount ++;
+        }
+    }
+    // stwórz tablicę z numerem dnia miesiąca i mumerem komórki
+    // niektóre komórki będą puste (początkowe i końcowe),
+    //następnie skorzystaj z map żeby wyświetlić te komórki
+    // jako tablicę
 
 
     render(){
@@ -46,6 +78,9 @@ class Calendar extends React.Component {
                             {this.renderDaysHead()}
                         </tr>
                         </thead>
+                        <tbody>
+                            {this.renderMonthTable()}
+                        </tbody>
 
                     </table>
 
