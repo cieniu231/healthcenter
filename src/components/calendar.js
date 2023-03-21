@@ -13,7 +13,7 @@ class Calendar extends React.Component {
         };
         //this.input = input;
         this.toggleClass = this.toggleClass.bind(this);
-
+        this.handleClickPrev = this.handleClickPrev.bind(this);
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         this.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     }
@@ -21,6 +21,16 @@ class Calendar extends React.Component {
         const currentState = this.state.active;
         this.setState({active: !currentState});
     };
+
+    handleClickPrev() {
+        this.month--;
+        if (this.month < 0) {
+            this.month = 11;
+            this.year--;
+        }
+        this.state.counter ++;
+        console.log(this.state.counter);
+    }
 
     renderDaysHead() {
         return this.days.map((day) => <th>{day}</th>);
@@ -43,23 +53,48 @@ class Calendar extends React.Component {
 
         // number of all cells - both empty and with days
         const j = daysInMonth + firstMonthDay - 1;
+        let emptycount = 0;
+        // make a counter for empty cells at the start of the month
+        for (let i=0; i<firstMonthDay-1; i++) {
+            emptycount++;
+        }
 
         // make a counter for <tr> and <td>
         let trcount = 0;
         let tdcount = 0;
 
+        if (firstMonthDay - 1 !== 0) {
+            trcount++;
+        }
 
         for (let i = firstMonthDay-1; i<j; i++) {
-            if(i % 7 == 0){
+            if(i % 7 === 0){
                 trcount++;
             }
             tdcount ++;
         }
+        const dayBoxTable = [];
+            for(let i = 0; i < trcount; i++){
+                dayBoxTable[i] = Array.from({length: 7}, (e, i) => ({ dayNumber: " " }));
+            }
+
+        for (let i = 0; i < trcount; i++){
+            if(emptycount > 0 && i === 0){
+                  for (let j = emptycount; j < 7; j++){
+                        dayBoxTable[i][j].dayNumber = j - emptycount + 1;
+                  }
+            } else
+            for (let j = 0; j < 7; j++){
+                  dayBoxTable[i][j].dayNumber =((7 * i) + j - 1 <= tdcount ? ((7 * i) + j - 1) : " ") ;
+                }
+            }
+        //console.log(dayBoxTable[2][2].dayNumber);
+        //console.log(tdcount);
+
+        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td>{item.dayNumber}</td>))}</tr>)});
+
     }
-    // stwórz tablicę z numerem dnia miesiąca i mumerem komórki
-    // niektóre komórki będą puste (początkowe i końcowe),
-    //następnie skorzystaj z map żeby wyświetlić te komórki
-    // jako tablicę
+
 
 
     render(){
@@ -68,7 +103,9 @@ class Calendar extends React.Component {
                 <input onClick={this.toggleClass} type="text" className="input-calendar"></input>
                 <div id="divCnt" className={this.state.active ? 'calendar calendar-show' : 'calendar'}>
                     <div id="divHeader" className="calendar-header">
-                        <div id="divButtons" className="calendar-prev-next"></div>
+                        <div id="divButtons" className="calendar-prev-next">
+                            <button onClick={this.handleClickPrev} className="input-prev"> &lt; </button>
+                        </div>
                         <div id="divDateText" className="date-name">{this.monthNames[this.month] + " " + this.year}</div>
                 </div>
                 <div id="divTable" className="calendar-table-cnt">
