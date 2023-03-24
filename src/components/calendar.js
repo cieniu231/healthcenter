@@ -6,14 +6,16 @@ class Calendar extends React.Component {
         super(props);
         this.now = new Date();
         this.day = this.now.getDate();
-        this.month = this.now.getMonth();
+        //this.month = this.now.getMonth();
         this.year = this.now.getFullYear();
         this.state = {
+            month : this.now.getMonth(),
             active : false,
         };
         //this.input = input;
         this.toggleClass = this.toggleClass.bind(this);
         this.handleClickPrev = this.handleClickPrev.bind(this);
+        this.handleClickNext = this.handleClickNext.bind(this);
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         this.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     }
@@ -23,13 +25,20 @@ class Calendar extends React.Component {
     };
 
     handleClickPrev() {
-        this.month--;
-        if (this.month < 0) {
-            this.month = 11;
+        this.setState({month: this.state.month-1});
+        if (this.state.month <= 0) {
+            this.setState({month: 11});
             this.year--;
         }
-        this.state.counter ++;
-        console.log(this.state.counter);
+        console.log(this.state.month);
+    }
+
+    handleClickNext() {
+        this.setState({month: this.state.month+1});
+        if (this.state.month >= 11) {
+            this.setState({month: 0});
+            this.year++;
+        }
     }
 
     renderDaysHead() {
@@ -39,10 +48,10 @@ class Calendar extends React.Component {
     renderMonthTable() {
 
         // get the numbers of days in the month
-        const daysInMonth = new Date(this.year, this.month+1, 0).getDate();
+        const daysInMonth = new Date(this.year, this.state.month+1, 0).getDate();
 
         // get the first day of the month
-        const tempDate = new Date(this.year, this.month, 1);
+        const tempDate = new Date(this.year, this.state.month, 1);
         let firstMonthDay = tempDate.getDay();
 
         // normally first day is Sunday, Monday is the last
@@ -105,8 +114,9 @@ class Calendar extends React.Component {
                     <div id="divHeader" className="calendar-header">
                         <div id="divButtons" className="calendar-prev-next">
                             <button onClick={this.handleClickPrev} className="input-prev"> &lt; </button>
+                            <button onClick={this.handleClickNext} className="input-next"> &gt; </button>
                         </div>
-                        <div id="divDateText" className="date-name">{this.monthNames[this.month] + " " + this.year}</div>
+                        <div id="divDateText" className="date-name">{this.monthNames[this.state.month] + " " + this.year}</div>
                 </div>
                 <div id="divTable" className="calendar-table-cnt">
                     <table className="calendar-table">

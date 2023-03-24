@@ -5,6 +5,9 @@ import { Menu } from './components/navigation';
 import Head  from './components/head.js';
 import Layout from "./components/layout";
 import Personellist from "./components/personellist";
+import JusMalPhoto from './img/personel/id1.jpg'
+import KamNowPhoto from './img/personel/id2.jpg'
+import RokoPhoto from './img/personel/id3.jpg'
 
 class App extends React.Component {
     constructor(props) {
@@ -29,13 +32,24 @@ class App extends React.Component {
         const workers = [
             {
                 name: "Kamil",
+                surname: "Nowocień",
                 specialization: "Psychiatrist",
-                workingTime: "mon/tue: 10-12"
+                workingTime: "mon/tue: 10-12",
+                srcPhoto : KamNowPhoto
             },
             {
                 name: "Justyna",
+                surname: "Malczak",
                 specialization: "Psychologist",
                 workingTime: "fri/thu: 10-15",
+                srcPhoto: JusMalPhoto
+            },
+            {
+                name: "Roko",
+                surname: "Sierściuch",
+                specialization: "Physiotherapist",
+                workingTime: "mon/tue/wed: 10-15",
+                srcPhoto: RokoPhoto
             }
         ];
         return (

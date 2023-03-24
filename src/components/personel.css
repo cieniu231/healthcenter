@@ -3,23 +3,41 @@
     margin: auto;
     padding: 15px;
     width: 75%;
-    height: 25vh;
+    height: 20vh;
     display: inline-block;
-
+    margin-top: 50px;
+    border-bottom: 3px solid black;
 }
 
 .id-photo-container {
     float: left;
-    width: 30%;
+    width: 20%;
+
 }
 
 .information-container {
-    width: 60%;
+    width: 75%;
     float: right;
+    font-size: clamp(0.1em, 1.2em, 1.6em);
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3em;
+}
+
+tr {
+    padding: 15px;
+    margin: auto;
+    line-height: 27px;
+}
+
+.information-table-container {
+    width: 90%;
+    padding: 15px;
 }
 
 .info-desc {
     text-align: left;
+    font-weight: bold;
 }
 .info {
     text-align: right;
