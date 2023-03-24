@@ -35,20 +35,23 @@ class App extends React.Component {
                 surname: "Nowocień",
                 specialization: "Psychiatrist",
                 workingTime: "mon/tue: 10-12",
+                workingDays: ["mon","tue"],
                 srcPhoto : KamNowPhoto
             },
             {
                 name: "Justyna",
                 surname: "Malczak",
                 specialization: "Psychologist",
-                workingTime: "fri/thu: 10-15",
+                workingTime: "10-15",
+                workingDays: ["fri", "thu"],
                 srcPhoto: JusMalPhoto
             },
             {
                 name: "Roko",
                 surname: "Sierściuch",
                 specialization: "Physiotherapist",
-                workingTime: "mon/tue/wed: 10-15",
+                workingTime: "10-15",
+                workingDays: ["mon", "tue", "wed"],
                 srcPhoto: RokoPhoto
             }
         ];

@@ -9,10 +9,10 @@ class Appointment extends React.Component {
 
     render(){
         return(
-        <>
-            <Calendar/>
-            <Appointmentform/>
-        </>
+         <>
+             <Appointmentform/>
+             <Calendar/>
+         </>
             )
     }
 }

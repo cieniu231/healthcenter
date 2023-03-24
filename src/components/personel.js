@@ -40,7 +40,7 @@ export class Person extends React.Component {
                         </tr>
                     </table>
                 </div>
-                <p>Show more</p>
+                <button className="person-button">Make an appointment</button>
             </div>
         )
     }

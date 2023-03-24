@@ -11,9 +11,11 @@ class Calendar extends React.Component {
         this.state = {
             month : this.now.getMonth(),
             active : false,
+            pickedDate : '',
         };
         //this.input = input;
         this.toggleClass = this.toggleClass.bind(this);
+        this.pickDate = this.pickDate.bind(this);
         this.handleClickPrev = this.handleClickPrev.bind(this);
         this.handleClickNext = this.handleClickNext.bind(this);
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -23,6 +25,12 @@ class Calendar extends React.Component {
         const currentState = this.state.active;
         this.setState({active: !currentState});
     };
+
+    pickDate(event) {
+        const actualmonth = this.state.month + 1;
+        this.setState({pickedDate: event.target.id + "-" + actualmonth + "-" + this.year})
+
+    }
 
     handleClickPrev() {
         this.setState({month: this.state.month-1});
@@ -100,7 +108,7 @@ class Calendar extends React.Component {
         //console.log(dayBoxTable[2][2].dayNumber);
         //console.log(tdcount);
 
-        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td>{item.dayNumber}</td>))}</tr>)});
+        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td id={item.dayNumber} onClick={this.pickDate}>{item.dayNumber}</td>))}</tr>)});
 
     }
 
@@ -109,7 +117,7 @@ class Calendar extends React.Component {
     render(){
         return(
             <div className="input-calendar-cnt">
-                <input onClick={this.toggleClass} type="text" className="input-calendar"></input>
+                <input value={this.state.pickedDate} onClick={this.toggleClass} type="text" className="input-calendar"></input>
                 <div id="divCnt" className={this.state.active ? 'calendar calendar-show' : 'calendar'}>
                     <div id="divHeader" className="calendar-header">
                         <div id="divButtons" className="calendar-prev-next">
@@ -130,6 +138,8 @@ class Calendar extends React.Component {
                         </tbody>
 
                     </table>
+
+
 
                 </div>
 

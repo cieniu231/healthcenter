@@ -6,11 +6,6 @@ class Appointmentform extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-                        value: '',
-                        choosenDoctor: '',
-
-                    };
     }
 
     render(){
@@ -26,7 +21,7 @@ class Appointmentform extends React.Component {
                 </div>
                 <div className="formField">
                 <label>Doctor</label>
-                    <select value={this.state.choosenDoctor} onChange={this.hadleChange}>
+                    <select>
                         <option>Kamil Nowocień</option>
                         <option>Justyna Malczak</option>
                         <option>Roko Sierściuch</option>

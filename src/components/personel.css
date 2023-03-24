@@ -3,7 +3,7 @@
     margin: auto;
     padding: 15px;
     width: 75%;
-    height: 20vh;
+    height: 22vh;
     display: inline-block;
     margin-top: 50px;
     border-bottom: 3px solid black;
@@ -12,6 +12,7 @@
 .id-photo-container {
     float: left;
     width: 20%;
+    height: 18vh;
 
 }
 
@@ -22,6 +23,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 1.3em;
+    height: 18vh;
 }
 
 tr {
@@ -41,4 +43,30 @@ tr {
 }
 .info {
     text-align: right;
+}
+
+.person-button {
+    font-weight: bold;
+    color: dimgrey;
+    text-align: center;
+    padding: 5px;
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(183,218,248,1) 0%, rgba(0,212,255,1) 100%);
+    border-radius: 5px;
+    margin: 10px auto 10px auto;
+}
+
+.person-button:hover {
+    color: black;
+    cursor: pointer;
+    border: 1px solid #a4a4a4;
+    border-top: 2px solid #b2b2b2;
+    background-color: #a0dbc4;
+    background: -webkit-gradient(linear, left top,
+    left bottom, from(#a8cfce), to(#beeae9));
+    background:
+            -moz-linear-gradient(top, #a8cfce, #beeae9);
+    background:
+            -o-linear-gradient(top, #a8cfce, #beeae9);
+    background:
+            -ms-linear-gradient(top, #a8cfce, #beeae9);
 }
