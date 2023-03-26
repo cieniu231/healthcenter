@@ -12,20 +12,20 @@ class Appointmentform extends React.Component {
         return(
             <form>
                 <div className="formField">
+                    <label>Doctor</label>
+                    <select>
+                        <option>Psychologist</option>
+                        <option>Psychiatrist</option>
+                        <option>Physiotherapist</option>
+                    </select>
+                </div>
+                <div className="formField">
                 <label for="name">Name:</label>
                     <input id="name" type="text" />
                 </div>
                 <div className="formField">
                 <label for="surname">Surname:</label>
                     <input id="surname" type="text"/>
-                </div>
-                <div className="formField">
-                <label>Doctor</label>
-                    <select>
-                        <option>Kamil Nowocień</option>
-                        <option>Justyna Malczak</option>
-                        <option>Roko Sierściuch</option>
-                    </select>
                 </div>
                 <div className="formField">
                 <label for="number">Phone number</label>

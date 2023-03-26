@@ -3,10 +3,21 @@
     margin: auto;
     padding: 15px;
     width: 75%;
-    height: 22vh;
-    display: inline-block;
+    height: 26vh;
+    display: block;
     margin-top: 50px;
-    border-bottom: 3px solid black;
+    border-bottom: 1px solid rgba(2,0,36,1);
+}
+
+.person-container-showMore {
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+    width: 75%;
+    height: 42vh;
+    display: block;
+    margin-top: 50px;
+    border-bottom: 1px solid rgba(2,0,36,1);
 }
 
 .id-photo-container {
@@ -19,10 +30,9 @@
 .information-container {
     width: 75%;
     float: right;
-    font-size: clamp(0.1em, 1.2em, 1.6em);
+    font-size: 2.4vh;
     text-align: center;
     text-decoration: none;
-    font-size: 1.3em;
     height: 18vh;
 }
 
@@ -69,4 +79,17 @@ tr {
             -o-linear-gradient(top, #a8cfce, #beeae9);
     background:
             -ms-linear-gradient(top, #a8cfce, #beeae9);
+}
+
+.show-more-container {
+    text-align: center;
+}
+
+.show-more-button:hover {
+    color: rgba(0,212,255,1);
+    cursor: pointer;
+}
+
+.more-information {
+    position: static;
 }

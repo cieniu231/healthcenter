@@ -1,0 +1,26 @@
+.about-info-container {
+    border-bottom: 1px solid rgba(2,0,36,1);
+    display: inline-block;
+    float: right;
+    font-size: 1.5em;
+    text-align: left;
+    padding: 0 10px 10px;
+    margin: 7% 0 20px 0;
+    max-width: 65%;
+}
+
+.about-paragraph {
+    margin: auto;
+
+}
+
+.about-photo {
+    max-width: 20%;
+
+    display: inline-block;
+    margin: 8% auto 30px auto;
+}
+
+.about-container {
+    display: inline-block;
+}
