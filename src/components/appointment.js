@@ -6,6 +6,8 @@ import './appointmentform.css'
 class Appointment extends React.Component {
     constructor(props){
         super(props);
+        this.pickDoctor = this.pickDoctor.bind(this);
+        this.setAppDate = this.setAppDate.bind(this);
 
         this.state = {
             pickedDate : new Date(),
@@ -13,12 +15,24 @@ class Appointment extends React.Component {
         }
     }
 
+    pickDoctor(event) {
+        this.setState({pickedDoctor:event.target.value})
+        console.log(this.state.pickedDoctor)
+    }
+    setAppDate(event) {
+        this.setState({pickedDate: new Date(event.target.id)})
+
+        console.log(event.target.id);
+        console.log(this.state.pickedDate);
+
+    }
+
     render(){
         return(
             <>
                 <div className="formField">
-                    <label>Doctor</label>
-                    <select>
+                    <label >Doctor</label>
+                    <select onChange={this.pickDoctor}>
                         <option>Psychologist</option>
                         <option>Psychiatrist</option>
                         <option>Physiotherapist</option>
@@ -26,7 +40,7 @@ class Appointment extends React.Component {
                 </div>
                 <div className="formField">
                 <label>Pick a date</label>
-                    <div className="pickDate"><Calendar/></div>
+                    <div className="pickDate"><Calendar pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
                 </div>
                 <div className="formField">
                     <label htmlFor="name">Name:</label>
@@ -44,6 +58,7 @@ class Appointment extends React.Component {
                     <label htmlFor="email">E-mail</label>
                     <input id="email" type="email"/>
                 </div>
+
             </>
         )
     }
