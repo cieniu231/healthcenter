@@ -10,7 +10,7 @@ class Appointment extends React.Component {
         this.setAppDate = this.setAppDate.bind(this);
 
         this.state = {
-            pickedDate : new Date(),
+            pickedDate : new Date(null),
             pickedDoctor : '',
         }
     }
@@ -22,17 +22,25 @@ class Appointment extends React.Component {
     setAppDate(event) {
         this.setState({pickedDate: new Date(event.target.id)})
 
+
+        console.log("początek");
         console.log(event.target.id);
         console.log(this.state.pickedDate);
 
+        const pickedDateProps = this.state.pickedDate;
+       // pickedDateProps.setDate(this.state.pickedDate.getDate()+1);
+        console.log(pickedDateProps);
+
     }
+
 
     render(){
         return(
             <>
                 <div className="formField">
-                    <label >Doctor</label>
+                    <label>Doctor</label>
                     <select onChange={this.pickDoctor}>
+                        <option></option>
                         <option>Psychologist</option>
                         <option>Psychiatrist</option>
                         <option>Physiotherapist</option>
@@ -40,6 +48,7 @@ class Appointment extends React.Component {
                 </div>
                 <div className="formField">
                 <label>Pick a date</label>
+
                     <div className="pickDate"><Calendar pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
                 </div>
                 <div className="formField">

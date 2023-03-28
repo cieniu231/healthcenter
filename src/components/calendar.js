@@ -11,11 +11,9 @@ class Calendar extends React.Component {
         this.state = {
             month : this.now.getMonth(),
             active : false,
-            pickedDate : '',
         };
         //this.input = input;
         this.toggleClass = this.toggleClass.bind(this);
-        this.pickDate = this.pickDate.bind(this);
         this.handleClickPrev = this.handleClickPrev.bind(this);
         this.handleClickNext = this.handleClickNext.bind(this);
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -27,12 +25,6 @@ class Calendar extends React.Component {
         const currentState = this.state.active;
         this.setState({active: !currentState});
     };
-
-    pickDate(event) {
-        event.target.value = this.props.pickedDate.getDate()+"-"+(this.state.month+1)+"-"+this.props.pickedDate.getFullYear();
-        console.log(event.target.value);
-
-    }
 
     handleClickPrev() {
         this.setState({month: this.state.month-1});
@@ -107,8 +99,7 @@ class Calendar extends React.Component {
                   dayBoxTable[i][j].dayNumber =((7 * i) + j - 1 <= tdcount ? ((7 * i) + j - 1) : " ") ;
                 }
             }
-        //console.log(dayBoxTable[2][2].dayNumber);
-        //console.log(tdcount);
+
         const actualMonth=this.state.month+1;
 
         return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
@@ -120,7 +111,7 @@ class Calendar extends React.Component {
     render(){
         return(
             <div className="input-calendar-cnt">
-                <input value={this.props.pickedDate} onChange={this.pickDate} onClick={this.toggleClass} type="date" className="input-calendar"></input>
+                <input value={this.props.pickedDate.getFullYear()===1970?"":this.props.pickedDate.toString().slice(4,15)}  onClick={this.toggleClass} type="text" className="input-calendar"></input>
                 <div id="divCnt" className={this.state.active ? 'calendar calendar-show' : 'calendar'}>
                     <div id="divHeader" className="calendar-header">
                         <div id="divButtons" className="calendar-prev-next">
@@ -139,13 +130,8 @@ class Calendar extends React.Component {
                         <tbody>
                             {this.renderMonthTable()}
                         </tbody>
-
                     </table>
-
-
-
                 </div>
-
                 </div>
             </div>
         )

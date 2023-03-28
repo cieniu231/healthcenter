@@ -59,7 +59,7 @@ class App extends React.Component {
             <div className="App">
                 <Head/>
                 <Menu menu={menu} handleClick={this.handleClick}/>
-                <Layout workers={workers} actualPage={this.state.actualPage}/>
+                <Layout workers={workers} handleClick={this.handleClick} actualPage={this.state.actualPage}/>
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
                     <p>

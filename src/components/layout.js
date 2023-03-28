@@ -7,16 +7,14 @@ import Appointment from './appointment.js'
 class Layout extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {
-
         let pageRender;
         if(this.props.actualPage == "About us") {
             pageRender = <About/>;
         } else if(this.props.actualPage == "Our crew") {
-            pageRender = <Personellist workers={this.props.workers} />;
+            pageRender = <Personellist handleClick={this.props.handleClick} workers={this.props.workers} />;
         } else if(this.props.actualPage == "Make an appointment") {
             pageRender = <Appointment/>;
         }

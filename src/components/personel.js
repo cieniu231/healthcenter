@@ -50,7 +50,7 @@ export class Person extends React.Component {
                         </tr>
                     </table>
                 </div>
-                <button className="person-button">Make an appointment</button>
+                <button id="Make an appointment" onClick={this.props.handleClick}className="person-button">Make an appointment</button>
                 <div className="show-more-container">
                     <span className="show-more-button" onClick={this.showMoreClick}>Show more</span>
                 </div>

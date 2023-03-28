@@ -9,7 +9,7 @@ class Personellist extends React.Component {
     }
 
     render() {
-        const workersList = this.props.workers.map((item)=><Person name={item.name} surname={item.surname} specialization={item.specialization} workingTime={item.workingTime} srcPhoto={item.srcPhoto}/>)
+        const workersList = this.props.workers.map((item)=><Person handleClick={this.props.handleClick}name={item.name} surname={item.surname} specialization={item.specialization} workingTime={item.workingTime} srcPhoto={item.srcPhoto}/>)
 
         return (
                 <>
