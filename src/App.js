@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Menu } from './components/navigation';
 import Head  from './components/head.js';
-import Layout from "./components/layout";
+import Layout from './components/layout';
+import Footer from './components/footer';
 import Personellist from "./components/personellist";
 import JusMalPhoto from './img/personel/id1.jpg'
 import KamNowPhoto from './img/personel/id2.jpg'
@@ -60,20 +61,7 @@ class App extends React.Component {
                 <Head/>
                 <Menu menu={menu} handleClick={this.handleClick}/>
                 <Layout workers={workers} handleClick={this.handleClick} actualPage={this.state.actualPage}/>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
-                </header>
+                <Footer/>
             </div>
         );
     }

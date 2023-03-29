@@ -1,0 +1,15 @@
+.footer-main-container {
+    width: 100%;
+    height: 5vh;
+    position: relative;
+    bottom: 0px;
+    background-color: #00d4ff;
+    clear:both;
+}
+
+.footer-description {
+    display: block;
+    margin: auto;
+    font-size: 1.2em;
+    padding:5px;
+}

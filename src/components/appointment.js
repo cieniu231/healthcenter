@@ -8,10 +8,19 @@ class Appointment extends React.Component {
         super(props);
         this.pickDoctor = this.pickDoctor.bind(this);
         this.setAppDate = this.setAppDate.bind(this);
+        this.setName = this.setName.bind(this);
+        this.setSurname = this.setSurname.bind(this);
+        this.setNumber = this.setNumber.bind(this);
+        this.setMail = this.setMail.bind(this);
+        this.klikajTO = this.klikajTO.bind(this);
 
         this.state = {
             pickedDate : new Date(null),
             pickedDoctor : '',
+            patientName : '',
+            patientSurname : '',
+            patientNumber : '',
+            patientMail : '',
         }
     }
 
@@ -22,7 +31,6 @@ class Appointment extends React.Component {
     setAppDate(event) {
         this.setState({pickedDate: new Date(event.target.id)})
 
-
         console.log("początek");
         console.log(event.target.id);
         console.log(this.state.pickedDate);
@@ -30,9 +38,27 @@ class Appointment extends React.Component {
         const pickedDateProps = this.state.pickedDate;
        // pickedDateProps.setDate(this.state.pickedDate.getDate()+1);
         console.log(pickedDateProps);
-
     }
 
+    setName(event) {
+        this.setState({patientName: event.target.value})
+    }
+
+    setSurname(event) {
+        this.setState({patientSurname: event.target.value})
+    }
+
+    setNumber(event) {
+        this.setState({patientNumber: event.target.value})
+    }
+
+    setMail(event) {
+        this.setState({patientMail: event.target.value})
+    }
+
+    klikajTO(event) {
+        console.log(this.state.patientName, this.state.patientSurname, this.state.patientNumber, this.state.patientMail)
+    }
 
     render(){
         return(
@@ -53,21 +79,21 @@ class Appointment extends React.Component {
                 </div>
                 <div className="formField">
                     <label htmlFor="name">Name:</label>
-                    <input id="name" type="text"/>
+                    <input onChange={this.setName} id="name" type="text"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="surname">Surname:</label>
-                    <input id="surname" type="text"/>
+                    <input onChange={this.setSurname} id="surname" type="text"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="number">Phone number</label>
-                    <input id="number" type="tel"/>
+                    <input onChange={this.setNumber} id="number" type="tel"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="email">E-mail</label>
-                    <input id="email" type="email"/>
+                    <input onChange={this.setMail} id="email" type="email"/>
                 </div>
-
+                <button onClick={this.klikajTO}>kliknij se batona</button>
             </>
         )
     }
