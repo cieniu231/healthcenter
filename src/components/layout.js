@@ -3,6 +3,7 @@ import './layout.css'
 import About from './about.js'
 import Personellist from './personellist.js'
 import Appointment from './appointment.js'
+import MapContainer from './map.js'
 
 class Layout extends React.Component {
     constructor(props) {
@@ -22,13 +23,37 @@ class Layout extends React.Component {
         return (
             <>
                 <aside className="left-panel">
-                    <p>tutaj będą godziny otwarcia pobieranie z wizytówki google</p>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10339.444350259262!2d19.492158928546548!3d51.737408186215724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1680117526389!5m2!1spl!2spl"
-                        className="map"
-                        allowFullScreen="" loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th> <th>Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Monday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Tuesday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Wednesday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Thursday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Friday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Saturday</th> <td>10-17</td>
+                            </tr>
+                            <tr>
+                                <th>Sunday</th> <td>10-17</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <MapContainer/>
                 </aside>
                 <section className="main-content">
                     <article>
