@@ -102,7 +102,9 @@ class Calendar extends React.Component {
 
         const actualMonth=this.state.month+1;
 
-        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
+
+
+        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td className={this.year===this.now.getFullYear()&&actualMonth===this.now.getMonth()&&item.dayNumber===this.now.getDate()?'current-day':'current-day'} id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
 
     }
 

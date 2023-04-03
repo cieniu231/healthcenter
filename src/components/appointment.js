@@ -16,7 +16,7 @@ class Appointment extends React.Component {
 
         this.state = {
             pickedDate : new Date(null),
-            pickedDoctor : '',
+            pickedDoctor : this.props.pickedDoctor,
             patientName : '',
             patientSurname : '',
             patientNumber : '',
@@ -60,22 +60,22 @@ class Appointment extends React.Component {
         console.log(this.state.patientName, this.state.patientSurname, this.state.patientNumber, this.state.patientMail)
     }
 
+
     render(){
+        const workers = this.props.workers.map(el=><option>{el.name+" "+el.surname}</option>)
+
         return(
             <>
                 <div className="formField">
                     <label>Doctor</label>
-                    <select onChange={this.pickDoctor}>
-                        <option></option>
-                        <option>Psychologist</option>
-                        <option>Psychiatrist</option>
-                        <option>Physiotherapist</option>
+                    <select defaultValue={this.state.pickedDoctor} onChange={this.pickDoctor}>
+                        <option> </option>
+                        {workers}
                     </select>
                 </div>
                 <div className="formField">
                 <label>Pick a date</label>
-
-                    <div className="pickDate"><Calendar pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
+                    <div className="pickDate"><Calendar pickedDoctor={this.state.pickedDoctor} pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
                 </div>
                 <div className="formField">
                     <label htmlFor="name">Name:</label>

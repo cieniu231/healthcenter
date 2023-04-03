@@ -17,43 +17,31 @@ class Layout extends React.Component {
         } else if(this.props.actualPage == "Our crew") {
             pageRender = <Personellist handleClick={this.props.handleClick} workers={this.props.workers} />;
         } else if(this.props.actualPage == "Make an appointment") {
-            pageRender = <Appointment/>;
+            pageRender = <Appointment pickedDoctor={this.props.pickedDoctor} workers={this.props.workers}/>;
         }
+
+        const openHours = this.props.openHours.map(el =>
+                <tr>
+                    <th>{el.day}</th> <td>{el.hours}</td>
+                 </tr>
+        )
 
         return (
             <>
                 <aside className="left-panel">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Day</th> <th>Hours</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Monday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Tuesday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Wednesday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Thursday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Friday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Saturday</th> <td>10-17</td>
-                            </tr>
-                            <tr>
-                                <th>Sunday</th> <td>10-17</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <MapContainer/>
+                    <div className="open-hours-container">
+                        <table className="open-hours-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th> <th>Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {openHours}
+                            </tbody>
+                        </table>
+                    </div>
+                    <MapContainer openHours={this.props.openHours}/>
                 </aside>
                 <section className="main-content">
                     <article>

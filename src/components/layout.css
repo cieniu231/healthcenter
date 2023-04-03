@@ -1,16 +1,30 @@
 .left-panel {
-    width: 33%;
+    width: 34%;
     float:left;
-    background-color: dimgrey;
+    background-color: #d9ecf1;
 }
 
 .main-content {
     width: 66%;
     float: right;
-    background-color: #282c34;
+    background-color: #7184ab;
     min-height: 100vh;
 }
 
 #map {
     height: 480px;
+}
+
+.open-hours-container {
+    margin: 5vh auto 5vh auto;
+
+}
+
+.open-hours-table {
+    margin: auto;
+    font-size: 1.5em;
+}
+
+th {
+    padding: 5px;
 }

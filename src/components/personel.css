@@ -63,6 +63,7 @@ tr {
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(183,218,248,1) 0%, rgba(0,212,255,1) 100%);
     border-radius: 5px;
     margin: 10px auto 10px auto;
+    font-size: 1.8vh;
 }
 
 .person-button:hover {
@@ -83,13 +84,19 @@ tr {
 
 .show-more-container {
     text-align: center;
+    font-size: 1.8vh;
 }
 
 .show-more-button:hover {
     color: rgba(0,212,255,1);
     cursor: pointer;
+    font-size: 1.8vh;
 }
 
 .more-information {
     position: static;
+}
+
+.more-chapter {
+    display: initial;
 }

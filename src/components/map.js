@@ -1,9 +1,12 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader, InfoWindow, Marker } from '@react-google-maps/api';
 
+
+
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    margin: '5% auto 5% auto',
+    width: '100%',
+    height: '450px'
 };
 
 const center = {
@@ -20,7 +23,7 @@ const divStyle = {
     padding: 15
 };
 
-function MapContainer() {
+function MapContainer(props) {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: "AIzaSyD0sMYn0mNvs6r2xpDyDGe7sOg1mtoD0E8"
@@ -42,6 +45,12 @@ function MapContainer() {
     }, [])
 
 
+    const date = new Date();
+
+    const openHours = props.openHours;
+
+    const actualDay = openHours.filter(el => el.dayNumber === date.getDay())
+
     return isLoaded ? (
         <GoogleMap
             mapContainerStyle={containerStyle}
@@ -59,7 +68,7 @@ function MapContainer() {
                     position={position}
                 >
                     <div style={divStyle}>
-                        <h1>InfoWindow</h1>
+                        <h1>{actualDay[0].day+" "+actualDay[0].hours}</h1>
                     </div>
                 </InfoWindow>
             </>

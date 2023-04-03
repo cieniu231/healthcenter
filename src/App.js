@@ -14,18 +14,27 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {actualPage:"About us"}
+        this.state = {
+            actualPage:"About us",
+            pickedDoctor:""
+        }
         this.handleClick = this.handleClick.bind(this)
+        this.handleClickAppointment = this.handleClickAppointment.bind(this)
     }
 
     handleClick(event) {
         this.setState(
             {actualPage: event.target.id}
         )
+    }
 
-        const name = event.target.id;
-        console.log('this ma wartość:', this.state.actualPage);
-        console.log('name ma wartość:', name);
+    handleClickAppointment(event) {
+        this.setState(
+            {
+                actualPage: "Make an appointment",
+                pickedDoctor: event.target.id
+            }
+        )
     }
 
     render() {
@@ -56,11 +65,50 @@ class App extends React.Component {
                 srcPhoto: RokoPhoto
             }
         ];
+        const openHours = [
+            {
+                day: "Monday",
+                hours: "10-17",
+                dayNumber: 1,
+            },
+            {
+                day: "Tuesday",
+                hours: "10-17",
+                dayNumber: 2,
+            },
+            {
+                day: "Wednesday",
+                hours: "10-17",
+                dayNumber: 3,
+            },
+            {
+                day: "Thursday",
+                hours: "10-17",
+                dayNumber: 4,
+            },
+            {
+                day: "Friday",
+                hours: "10-17",
+                dayNumber: 5,
+            },
+            {
+                day: "Saturday",
+                hours: "-",
+                dayNumber: 6,
+            },
+            {
+                day: "Sunday",
+                hours: "-",
+                dayNumber: 0,
+            }
+        ]
+
+
         return (
             <div className="App">
                 <Head/>
                 <Menu menu={menu} handleClick={this.handleClick}/>
-                <Layout workers={workers} handleClick={this.handleClick} actualPage={this.state.actualPage}/>
+                <Layout openHours={openHours} workers={workers} handleClick={this.handleClickAppointment} pickedDoctor={this.state.pickedDoctor} actualPage={this.state.actualPage}/>
                 <Footer/>
             </div>
         );
