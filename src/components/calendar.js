@@ -89,22 +89,25 @@ class Calendar extends React.Component {
                 dayBoxTable[i] = Array.from({length: 7}, (e, i) => ({ dayNumber: " " }));
             }
 
-        for (let i = 0; i < trcount; i++){
-            if(emptycount > 0 && i === 0){
+        for (let i = 0; i < trcount; i++) {
+            if (emptycount > 0 && i === 0) {
                   for (let j = emptycount; j < 7; j++){
-                        dayBoxTable[i][j].dayNumber = j - emptycount + 1;
+                      dayBoxTable[i][j].dayNumber = j - emptycount + 1
                   }
-            } else
-            for (let j = 0; j < 7; j++){
-                  dayBoxTable[i][j].dayNumber =((7 * i) + j - 1 <= tdcount ? ((7 * i) + j - 1) : " ") ;
+            } else if (emptycount === 0) {
+                for (let j = 0; j < 7; j++){
+                    dayBoxTable[i][j].dayNumber =((7 * i) + j + 1 <= tdcount ? ((7 * i) + j + 1) : " ")
+                }
+            } else {
+                for (let j = 0; j < 7; j++) {
+                    dayBoxTable[i][j].dayNumber =((7 * i) + j + 1 - emptycount <= tdcount ? ((7 * i) + j + 1 - emptycount) : " ")
                 }
             }
+        }
 
         const actualMonth=this.state.month+1;
 
-
-
-        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td className={this.year===this.now.getFullYear()&&actualMonth===this.now.getMonth()&&item.dayNumber===this.now.getDate()?'current-day':'current-day'} id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
+        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td className={this.year===this.now.getFullYear()&&this.state.month===this.now.getMonth()&&item.dayNumber===this.now.getDate()?'current-day':'day'} id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
 
     }
 
