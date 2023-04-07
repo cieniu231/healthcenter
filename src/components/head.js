@@ -7,9 +7,7 @@ class Head extends React.Component {
 
     render() {
         return(
-
                 <img className="head-picture"src={headerphoto} alt="Header photo"/>
-
         )
     }
 }

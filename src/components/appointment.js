@@ -1,18 +1,14 @@
 import React from 'react'
 import Calendar from './calendar.js'
-import Appointmentform from './appointmentform.js'
-import './appointmentform.css'
+import './appointment.css'
 
 class Appointment extends React.Component {
     constructor(props){
         super(props);
         this.pickDoctor = this.pickDoctor.bind(this);
         this.setAppDate = this.setAppDate.bind(this);
-        this.setName = this.setName.bind(this);
-        this.setSurname = this.setSurname.bind(this);
-        this.setNumber = this.setNumber.bind(this);
-        this.setMail = this.setMail.bind(this);
-        this.klikajTO = this.klikajTO.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         this.state = {
             pickedDate : new Date(null),
@@ -30,34 +26,23 @@ class Appointment extends React.Component {
     }
     setAppDate(event) {
         this.setState({pickedDate: new Date(event.target.id)})
-
-        console.log("początek");
-        console.log(event.target.id);
-        console.log(this.state.pickedDate);
-
         const pickedDateProps = this.state.pickedDate;
-       // pickedDateProps.setDate(this.state.pickedDate.getDate()+1);
         console.log(pickedDateProps);
     }
 
-    setName(event) {
-        this.setState({patientName: event.target.value})
+    handleChange(event) {
+        this.setState({[event.target.name] : event.target.value})
     }
 
-    setSurname(event) {
-        this.setState({patientSurname: event.target.value})
-    }
-
-    setNumber(event) {
-        this.setState({patientNumber: event.target.value})
-    }
-
-    setMail(event) {
-        this.setState({patientMail: event.target.value})
-    }
-
-    klikajTO(event) {
-        console.log(this.state.patientName, this.state.patientSurname, this.state.patientNumber, this.state.patientMail)
+    handleSubmit(event) {
+        alert(
+            "pickedDoctor: "+this.state.pickedDoctor+"\n"+
+            "pickedDate: "+this.state.pickedDate+"\n"+
+            "patientName: "+this.state.patientName+"\n"+
+            "patientSurname: "+this.state.patientSurname+"\n"+
+            "patientNumber: "+this.state.patientNumber+"\n"+
+            "patientMail: "+this.state.patientMail
+        )
     }
 
 
@@ -79,21 +64,21 @@ class Appointment extends React.Component {
                 </div>
                 <div className="formField">
                     <label htmlFor="name">Name:</label>
-                    <input onChange={this.setName} id="name" type="text"/>
+                    <input name="patientName" onChange={this.handleChange} id="name" type="text"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="surname">Surname:</label>
-                    <input onChange={this.setSurname} id="surname" type="text"/>
+                    <input name="patientSurname" onChange={this.handleChange} id="surname" type="text"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="number">Phone number</label>
-                    <input onChange={this.setNumber} id="number" type="tel"/>
+                    <input name="patientNumber" onChange={this.handleChange} id="number" type="tel"/>
                 </div>
                 <div className="formField">
                     <label htmlFor="email">E-mail</label>
-                    <input onChange={this.setMail} id="email" type="email"/>
+                    <input name="patientMail" onChange={this.handleChange} id="email" type="email"/>
                 </div>
-                <button onClick={this.klikajTO}>kliknij se batona</button>
+                <button className="appointment-button" onClick={this.handleSubmit}>Make an appointment</button>
             </>
         )
     }

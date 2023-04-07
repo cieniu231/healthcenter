@@ -101,5 +101,30 @@ label {
     float: none;
     padding: 10px;
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(183,218,248,1) 0%, rgba(0,212,255,1) 100%);
+}
+.appointment-button {
+    font-weight: bold;
+    color: dimgrey;
+    text-align: center;
+    padding: 5px;
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(183,218,248,1) 0%, rgba(0,212,255,1) 100%);
+    border-radius: 5px;
+    margin: 10px auto 10px auto;
+    font-size: 1.8vh;
+}
 
+.appointment-button:hover {
+    color: black;
+    cursor: pointer;
+    border: 1px solid #a4a4a4;
+    border-top: 2px solid #b2b2b2;
+    background-color: #a0dbc4;
+    background: -webkit-gradient(linear, left top,
+    left bottom, from(#a8cfce), to(#beeae9));
+    background:
+            -moz-linear-gradient(top, #a8cfce, #beeae9);
+    background:
+            -o-linear-gradient(top, #a8cfce, #beeae9);
+    background:
+            -ms-linear-gradient(top, #a8cfce, #beeae9);
 }
