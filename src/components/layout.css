@@ -28,3 +28,16 @@
 th {
     padding: 5px;
 }
+
+@media only screen and (max-width: 630px) {
+    .left-panel {
+        width: 100%;
+        display: block;
+    }
+
+    .main-content {
+        width: 100%;
+        display: block;
+
+    }
+}

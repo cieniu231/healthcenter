@@ -9,10 +9,12 @@ class Appointment extends React.Component {
         this.setAppDate = this.setAppDate.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleClass = this.toggleClass.bind(this);
 
         this.state = {
             pickedDate : new Date(null),
             pickedDoctor : this.props.pickedDoctor,
+            calendarActive : false,
             patientName : '',
             patientSurname : '',
             patientNumber : '',
@@ -25,9 +27,20 @@ class Appointment extends React.Component {
         console.log(this.state.pickedDoctor)
     }
     setAppDate(event) {
-        this.setState({pickedDate: new Date(event.target.id)})
-        const pickedDateProps = this.state.pickedDate;
-        console.log(pickedDateProps);
+        if (event.target.id === " "){
+            this.setState({pickedDate: new Date(null)});
+        } else if (event.target.className === 'unavaliable-day'){
+            alert("This doctor is not available on the selected day.");
+            this.setState({pickedDate: new Date(null)});
+        } else if (event.target.className === 'current-day'){
+            alert("We do not keep records for today");
+            this.setState({pickedDate: new Date(null)});
+        } else {
+            this.setState({pickedDate: new Date(event.target.id)})
+            const calendarActive = this.state.calendarActive;
+            this.setState({calendarActive: !calendarActive})
+        }
+
     }
 
     handleChange(event) {
@@ -44,6 +57,10 @@ class Appointment extends React.Component {
             "patientMail: "+this.state.patientMail
         )
     }
+    toggleClass(event) {
+        const currentState = this.state.calendarActive;
+        this.setState({calendarActive: !currentState});
+    };
 
 
     render(){
@@ -54,13 +71,12 @@ class Appointment extends React.Component {
                 <div className="formField">
                     <label>Doctor</label>
                     <select defaultValue={this.state.pickedDoctor} onChange={this.pickDoctor}>
-                        <option> </option>
                         {workers}
                     </select>
                 </div>
                 <div className="formField">
                 <label>Pick a date</label>
-                    <div className="pickDate"><Calendar pickedDoctor={this.state.pickedDoctor} pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
+                    <div className="pickDate"><Calendar toggleClass={this.toggleClass} calendarActive={this.state.calendarActive} workers={this.props.workers} pickedDoctor={this.state.pickedDoctor} pickedDate={this.state.pickedDate} pickDate={this.setAppDate}/></div>
                 </div>
                 <div className="formField">
                     <label htmlFor="name">Name:</label>

@@ -10,10 +10,8 @@ class Calendar extends React.Component {
         this.year = this.now.getFullYear();
         this.state = {
             month : this.now.getMonth(),
-            active : false,
         };
         //this.input = input;
-        this.toggleClass = this.toggleClass.bind(this);
         this.handleClickPrev = this.handleClickPrev.bind(this);
         this.handleClickNext = this.handleClickNext.bind(this);
         this.monthNames = ["January", "Fabruary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -21,10 +19,7 @@ class Calendar extends React.Component {
     }
 
 
-    toggleClass(event) {
-        const currentState = this.state.active;
-        this.setState({active: !currentState});
-    };
+
 
     handleClickPrev() {
         this.setState({month: this.state.month-1});
@@ -93,21 +88,56 @@ class Calendar extends React.Component {
             if (emptycount > 0 && i === 0) {
                   for (let j = emptycount; j < 7; j++){
                       dayBoxTable[i][j].dayNumber = j - emptycount + 1
+                      dayBoxTable[i][j].dayOfTheWeek = j;
+
                   }
             } else if (emptycount === 0) {
                 for (let j = 0; j < 7; j++){
                     dayBoxTable[i][j].dayNumber =((7 * i) + j + 1 <= tdcount ? ((7 * i) + j + 1) : " ")
+                    dayBoxTable[i][j].dayOfTheWeek = j;
+
                 }
             } else {
                 for (let j = 0; j < 7; j++) {
-                    dayBoxTable[i][j].dayNumber =((7 * i) + j + 1 - emptycount <= tdcount ? ((7 * i) + j + 1 - emptycount) : " ")
+                    dayBoxTable[i][j].dayNumber =((7 * i) + j + 1 - emptycount <= tdcount ? ((7 * i) + j + 1 - emptycount) : " ");
+                    dayBoxTable[i][j].dayOfTheWeek = j;
+
                 }
             }
         }
 
-        const actualMonth=this.state.month+1;
+        const actualMonth = this.state.month+1;
 
-        return dayBoxTable.map((row) => {return(<tr>{row.map((item)=>(<td className={this.year===this.now.getFullYear()&&this.state.month===this.now.getMonth()&&item.dayNumber===this.now.getDate()?'current-day':'day'} id={this.year+","+actualMonth+","+item.dayNumber} onClick={this.props.pickDate}>{item.dayNumber}</td>))}</tr>)});
+        const pickedDoctorName =  this.props.pickedDoctor === " " ? " " : this.props.pickedDoctor.split(" ");
+
+        const pickedDoctor = this.props.workers.filter(el => el.name === pickedDoctorName[0] && el.surname === pickedDoctorName[1]);
+
+
+        console.log(pickedDoctorName[1]);
+
+        //console.log(pickedDoctor[0].workingDays);
+
+
+
+
+        return dayBoxTable.map((row) => {
+            return (
+                <tr>
+                    {
+                        row.map((item) => (
+                            <td className = {
+                                this.year===this.now.getFullYear()&&this.state.month===this.now.getMonth()&&item.dayNumber===this.now.getDate() ? 'current-day' :
+                                    (pickedDoctor[0].workingDays.some(el => el === item.dayOfTheWeek) || item.dayNumber  === " ") && ((item.dayNumber > this.now.getDate() && this.state.month === this.now.getMonth() && this.year === this.now.getFullYear())||(this.state.month>this.now.getMonth())&&this.year===this.now.getFullYear()||this.year>this.now.getFullYear()) ? 'day' : 'unavaliable-day'
+                            }
+                                id={item.dayNumber !== " "?this.year+","+actualMonth+","+item.dayNumber:" "}
+                                onClick={this.props.pickDate}>
+                                    {item.dayNumber}
+                            </td>
+                                )
+                            )
+                    }
+                </tr>
+        )});
 
     }
 
@@ -116,8 +146,8 @@ class Calendar extends React.Component {
     render(){
         return(
             <div className="input-calendar-cnt">
-                <input value={this.props.pickedDate.getFullYear()===1970?"":this.props.pickedDate.toString().slice(4,15)}  onClick={this.toggleClass} type="text" className="input-calendar"></input>
-                <div id="divCnt" className={this.state.active ? 'calendar calendar-show' : 'calendar'}>
+                <input value={this.props.pickedDate.getFullYear()===1970?" ":this.props.pickedDate.toString().slice(4,15)} onClick={this.props.toggleClass} type="text" className="input-calendar"></input>
+                <div id="divCnt" className={this.props.calendarActive ? 'calendar calendar-show' : 'calendar'}>
                     <div id="divHeader" className="calendar-header">
                         <div id="divButtons" className="calendar-prev-next">
                             <button onClick={this.handleClickPrev} className="input-prev"> &lt; </button>

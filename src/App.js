@@ -14,7 +14,7 @@ class App extends React.Component {
 
         this.state = {
             actualPage:"About us",
-            pickedDoctor:""
+            pickedDoctor:"Kamil Nowocień"
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleClickAppointment = this.handleClickAppointment.bind(this)

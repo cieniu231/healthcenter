@@ -28,26 +28,26 @@ class Layout extends React.Component {
 
         return (
             <>
-                <aside className="left-panel">
-                    <div className="open-hours-container">
-                        <table className="open-hours-table">
-                            <thead>
-                                <tr>
-                                    <th>Day</th> <th>Hours</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {openHours}
-                            </tbody>
-                        </table>
-                    </div>
-                    <MapContainer openHours={this.props.openHours}/>
-                </aside>
                 <section className="main-content">
                     <article>
                         {pageRender}
                     </article>
                 </section>
+                <aside className="left-panel">
+                    <div className="open-hours-container">
+                        <table className="open-hours-table">
+                            <thead>
+                            <tr>
+                                <th>Day</th> <th>Hours</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {openHours}
+                            </tbody>
+                        </table>
+                    </div>
+                    <MapContainer openHours={this.props.openHours}/>
+                </aside>
             </>
         )
     }

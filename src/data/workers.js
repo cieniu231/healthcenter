@@ -7,7 +7,7 @@ export const workers = [
     surname: "Nowocień",
     specialization: "Psychiatrist",
     workingTime: "10-17",
-    workingDays: ["mon","tue"],
+    workingDays: [0,1,2],
     srcPhoto : KamNowPhoto,
   },
   {
@@ -15,7 +15,7 @@ export const workers = [
     surname: "Malczak",
     specialization: "Psychologist",
     workingTime: "10-17",
-    workingDays: ["fri", "thu"],
+    workingDays: [1,2,3],
     srcPhoto: JusMalPhoto,
   },
   {
@@ -23,7 +23,7 @@ export const workers = [
     surname: "Sierściuch",
     specialization: "Physiotherapist",
     workingTime: "10-17",
-    workingDays: ["mon", "tue", "wed"],
+    workingDays: [1,3,4],
     srcPhoto: RokoPhoto,
   },
 ];

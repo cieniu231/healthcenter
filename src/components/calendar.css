@@ -112,9 +112,17 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAY
     cursor: pointer
 }
 .calendar .calendar-table td.current-day {
-    background-color: #F15C5C;
+    background-color: rgba(0,212,255,1);
     color:#fff;
 }
 .calendar .calendar-table td.current-day:hover {
-    background-color: #DE5858;
+    background-color: rgba(0,212,255,1);
+}
+
+.calendar .calendar-table td.unavaliable-day {
+    background-color: rgba(241, 92, 92, 0.29);
+    color:#fff;
+}
+.calendar .calendar-table td.unavaliable-day:hover {
+    background-color: rgba(241, 92, 92, 0.29);
 }
