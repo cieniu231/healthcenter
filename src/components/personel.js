@@ -45,7 +45,7 @@ export class Person extends React.Component {
                             <td className="info">{this.props.specialization}</td>
                         </tr>
                         <tr>
-                            <td className="info-desc">Working hours: </td>
+                            <td className="info-desc">Working hours : </td>
                             <td className="info">{this.props.workingTime}</td>
                         </tr>
                     </table>
@@ -55,9 +55,11 @@ export class Person extends React.Component {
                     <span className="show-more-button" onClick={this.showMoreClick}>Show more</span>
                 </div>
 
-                {this.state.showMore == true &&
+                {this.state.showMore === true &&
                     <div className="more-information">
-                    <p className="more-chapter">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className="more-chapter">
+                        {this.props.description}
+                    </p>
                     </div>
                 }
             </div>

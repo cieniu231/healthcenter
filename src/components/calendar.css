@@ -126,3 +126,9 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAY
 .calendar .calendar-table td.unavaliable-day:hover {
     background-color: rgba(241, 92, 92, 0.29);
 }
+
+.error {
+    background-color: #bd4646;
+    border: 1px solid #bdbdbd;
+
+}
